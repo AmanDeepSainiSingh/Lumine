@@ -13,8 +13,10 @@ def generate_response_gemma(prompt):
     try:
         response = ollama.generate(model='gemma:2b', prompt=prompt)
         return response['response']
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         return f"An error occurred: {e}"
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
 # Function to generate response using llama2 model
 def generate_response_llama(prompt):
@@ -22,8 +24,10 @@ def generate_response_llama(prompt):
         llm = Ollama(model="llama2")
         response = llm.invoke(prompt)
         return response
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         return f"An error occurred: {e}"
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
 # Function to fetch the list of recognized ingredients from TheMealDB API
 def fetch_ingredient_list():

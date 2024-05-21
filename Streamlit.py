@@ -6,6 +6,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import ollama
+import openpyxl
 from langchain_community.llms import Ollama
 
 # Function to generate response using gemma:2b model
